@@ -19,7 +19,7 @@ public class Solution
 
         foreach (string letter in s)
         {
-            if (letterTracker.ContainsKey)
+            if (letterTracker.ContainsKey(letter))
             {
                 letterTracker[letter] += 1;
             }
@@ -31,7 +31,7 @@ public class Solution
 
         foreach (string letter in t)
         {
-            if (letterTracker.ContainsKey)
+            if (letterTracker.ContainsKey(letter))
             {
                 letterTracker[letter] -= 1;
                 if (letterTracker[letter] < 0)
