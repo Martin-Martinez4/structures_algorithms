@@ -44,12 +44,25 @@ namespace LinkedListSpace
             *     }
             * }
         */
-        // public ListNode ReverseList(ListNode head)
-        // {
 
-        // }
+        // Fast But used more memory
+        public ListNode? ReverseList(ListNode head)
+        {
+            ListNode? currentNode = head;
+            ListNode? lastNode = null;
 
-       
+            while(currentNode != null)
+            {
+                ListNode? nextNode = currentNode.next;
+                currentNode.next = lastNode;
+                lastNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            return lastNode;
+        }
+
+
     }
 
     public static class EnumerableExtensions
@@ -59,9 +72,9 @@ namespace LinkedListSpace
         )
         {
             int sum = 0;
-            foreach(var number in numbers)
+            foreach (var number in numbers)
             {
-                if(number % 2 == 0)
+                if (number % 2 == 0)
                 {
                     sum += number;
                 }

@@ -17,7 +17,7 @@ namespace LinkedListSpace
 
     public class MyLinkedList
     {
-        public ListNode? _head;
+        private ListNode? _head;
         public MyLinkedList()
         {
             _head = null;
@@ -30,7 +30,7 @@ namespace LinkedListSpace
 
         }
 
-        public MyLinkedList(ListNode node)
+        public MyLinkedList(ListNode node=null)
         {
             _head = node;
 
@@ -42,6 +42,11 @@ namespace LinkedListSpace
             {
                 this.Push(value);
             }
+        }
+
+        public ListNode? getHeadNode ()
+        {
+            return this._head;
         }
 
         public string PrintList()
@@ -82,9 +87,6 @@ namespace LinkedListSpace
                 return;
             }
 
-            // Find last Node, currentNOde.next == null
-            // 
-
             ListNode currentNode = this._head;
 
             while(currentNode.next != null)
@@ -97,6 +99,7 @@ namespace LinkedListSpace
             return;
             
         }
+        
         public void Push(IEnumerable<int> values)
         {
             foreach(int value in values)
