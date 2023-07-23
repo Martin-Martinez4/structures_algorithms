@@ -65,6 +65,7 @@ namespace LinkedListSpace
 
     }
 
+    // Was used just to learn testing
     public static class EnumerableExtensions
     {
         public static int SumOfEvenNumbers(
