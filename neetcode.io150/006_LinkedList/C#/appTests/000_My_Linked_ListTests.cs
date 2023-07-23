@@ -125,4 +125,57 @@ public class MyLinkedListsTest
         Assert.AreEqual(result, expected, $"For Input {input}, the expected result was {expected} actual result was {result}.");
     }
 
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 3,"[4,5,6,100]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 4,"[5,6,100]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 6,"[100]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 10,"[]")]
+    [TestCase(new int[]{-1,-2,5,1,7}, 0, "[-1,-2,5,1,7]")]
+    [TestCase(new int[]{-1000}, 0, "[-1000]")]
+    public void MyLinkedListGetNode_GetTheNodeAtTheSpecifiedIndex_ShouldPrintValuesOfListStartingAtTheNodeAtTheIndex(int[] input, int index, string expected)
+    {
+
+        // Create Connected Node
+        MyLinkedList testLinkList = new MyLinkedList(input);
+
+        ListNode? newHead = testLinkList.getNode(index);
+
+        MyLinkedList newTestLinkList = new MyLinkedList(newHead);
+
+        string result = newTestLinkList.PrintList();
+
+        Assert.AreEqual(result, expected, $"For Input {input} index {index}, the expected result was {expected} actual result was {result}.");
+    }
+    
+    [TestCase(new int[]{1,2,3,4,5,6,100},"[100,6,5,4,3,2,1]")]
+    [TestCase(new int[]{1,2,3,4,5,6}, "[6,5,4,3,2,1]")]
+    [TestCase(new int[]{7}, "[7]")]
+    public void MyLinkedListReverseInPlace_ReverseAListThatIsPartOfAnotherList_ShouldPrintValuesOfListReversedStartingAtTheNodeAtTheIndex(int[] input, string expected)
+    {
+
+        // Create Connected Node
+        MyLinkedList testLinkList = new MyLinkedList(input);
+
+        testLinkList.ReverseList();
+        string result = testLinkList.PrintList();
+
+        Assert.AreEqual(result, expected, $"\nFor Input {input}, the expected result was {expected} actual result was {result}.");
+    }
+    
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 3,"[1,2,3,100,6,5,4]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 4,"[1,2,3,4,100,6,5]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 6,"[1,2,3,4,5,6,100]")]
+    [TestCase(new int[]{1,2,3,4,5,6,100}, 0,"[100,6,5,4,3,2,1]")]
+    public void MyLinkedListReverseInPlace_ReverseAListThatIsPartOfAnotherList_ShouldPrintValuesOfListReversedStartingAtTheNodeAtTheIndex(int[] input, int index, string expected)
+    {
+
+        // Create Connected Node
+        MyLinkedList testLinkList = new MyLinkedList(input);
+
+        testLinkList.ReverseList(index);
+
+        string result = testLinkList.PrintList();
+
+        Assert.AreEqual(result, expected, $"\nFor Input {input} index {index}, the expected result was {expected} actual result was {result}.");
+    }
+
 }

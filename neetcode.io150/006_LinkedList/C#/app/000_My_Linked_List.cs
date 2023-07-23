@@ -30,7 +30,7 @@ namespace LinkedListSpace
 
         }
 
-        public MyLinkedList(ListNode node=null)
+        public MyLinkedList(ListNode node)
         {
             _head = node;
 
@@ -47,6 +47,26 @@ namespace LinkedListSpace
         public ListNode? getHeadNode ()
         {
             return this._head;
+        }
+
+        public ListNode? getNode(int index)
+        {
+            if(index == 0)
+            {
+                return this._head;
+            }
+            else if(index < 0)
+            {
+                return null;
+            }
+            ListNode? currentNode = this._head;
+            for(int i = 0; i < index; i++)
+            {
+                if(currentNode == null) return null;
+                currentNode = currentNode.next;
+            }
+
+            return currentNode;
         }
 
         public string PrintList()
@@ -107,6 +127,48 @@ namespace LinkedListSpace
                 this.Push(value);
             }
             
+        }
+
+        public void ReverseList()
+        {
+            ListNode? currentNode = this._head;
+            ListNode? lastNode = null;
+
+            while(currentNode != null)
+            {
+                ListNode? nextNode = currentNode.next;
+                currentNode.next = lastNode;
+                lastNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            this._head = lastNode;
+
+        }
+
+        public void ReverseList(int index)
+        {
+
+            if(index == 0)
+            {
+                this.ReverseList();
+                return;
+            }
+            ListNode? nodeBefore = getNode(index-1);
+
+            ListNode? currentNode = nodeBefore.next;
+            ListNode? lastNode = null;
+
+            while(currentNode != null)
+            {
+                ListNode? nextNode = currentNode.next;
+                currentNode.next = lastNode;
+                lastNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            nodeBefore.next = lastNode;
+
         }
 
     }
